@@ -1,8 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="0" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2022-06-01" time="19:58:48">
-  <environment os-version="10.0.19044" nunit-version="2.5.8.0" machine-name="1460YT2" user="bchapin" platform="Microsoft Windows 10 Pro for Workstations|C:\WINDOWS|\Device\Harddisk0\Partition4" clr-version="Unknown" cwd="C:\Users\bchapin\Documents\GitHub\Proofpoint.TAP" user-domain="CORP" />
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2022-06-02" time="20:43:53">
+  <environment machine-name="950fbc8da0e9" os-version="5.10.102.1-microsoft-standard-WSL2" cwd="/workspaces/Proofpoint.TAP" platform="Linux" nunit-version="2.5.8.0" user="root" clr-version="Unknown" user-domain="" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="0.173" asserts="0" description="Pester">
-    <results />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="3.3319" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="/workspaces/Proofpoint.TAP/Proofpoint.TAP/Tests/proofpoint.tap.Tests.ps1" executed="True" result="Success" success="True" time="3.3319" asserts="0" description="/workspaces/Proofpoint.TAP/Proofpoint.TAP/Tests/proofpoint.tap.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="proofpoint.tap" executed="True" result="Success" success="True" time="1.2253" asserts="0" description="proofpoint.tap">
+            <results>
+              <test-case description="Command is present after module import" name="proofpoint.tap.Command is present after module import" time="0.4224" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
   </test-suite>
 </test-results>
