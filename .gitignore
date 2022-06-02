@@ -1,2 +1,6 @@
+/ignore
 TestExplorerResults.xml
-ignore
+*.code-workspace
+
+#Put your Github Token here for act
+.secrets

@@ -1,0 +1,52 @@
+mode: ContinuousDeployment
+branches:
+  main:
+    regex: ^master$|^main$|^gitversion$
+    tag: 'beta'
+    increment: Patch
+  release:
+    tag: rc
+  pull-request:
+    tag: pr
+  dev: 
+    tag: dev
+
+#Custom commit messages to support Conventional Commit and DevMoji syntax
+
+#Reference: https://regex101.com/r/xdUFkI/1
+major-version-bump-message: 💥|:boom:|BREAKING CHANGE:|\+semver:\s?(breaking|major)
+#Reference: https://regex101.com/r/hegWXh/1
+minor-version-bump-message: ✨|:(feat|tada):|^feat:|\+semver:\s?(feature|minor)
+#Reference: https://regex101.com/r/NACNiA/1
+patch-version-bump-message: '[📌🐛🩹🚑♻️🗑️🔥⚡🔒➕➖🔗⚙️]|:(bug|refactor|perf|security|add|remove|deps|config):|^(fix|refactor|perf|security|style|deps):|\+semver:\s?(fix|patch)'
+#Reference: https://regex101.com/r/Kw8oen/1
+no-bump-message:  '[📝📚🎨🚨💡🧪✔️✅☑️🚀📦👷🌐🔧]|:(docs|style|test|test_tube|release|build|ci|i18n|chore|heavy_check_mark|white_check_mark|ballot_box_with_check):|^(docs|style|test|release|build|ci|i18n|chore):|\+semver:\s?(none|skip)'
+
+#Set the build numbers to be xxx, example 0.1.0-myfeature001 or 0.2.1-beta001. This allows for longer feature branch names, and can be increased for more active projects
+#You should set this to the number of commits you expect to have for a given branch before merging.
+#For instance, if vNext is never going to contain more than 99 commits before you push it to master as a new version, you can set this to 2. 3 is good for all but the largest projects.
+#BUG: Cannot use anything other than 4 until this is fixed: https://github.com/GitTools/GitVersion/issues/2632
+legacy-semver-padding: 4
+build-metadata-padding: 4
+commits-since-version-source-padding: 4
+
+#> git tag 0.1.2 -m 'meaningless message' -a; invoke-build
+#if existing build is at 0.1.1, this will increment to the 0.1.2 version, and clear prerelease tag
+#
+#> git tag beta -m 'message2' -a; invoke-build
+#adding this + build doesn't change .gitversion
+#
+#> git add .; git commit -m ':testtube: no bump message'
+#adding commit with bump level msg increments the patch leveland prerlease tag is back. not sure why, maybe because the gv.default has increment:patch.
+#
+#> git tag -d 0.1.2; git tag 0.1.3 -m 'bark' -a; invoke-build
+#increased the tag past the current version and prerelease info gone again. i don't think deleting the tag changed behavior here
+#
+#> git tag -d 0.1.3; git tag 0.1.4 -m 'bark' -a; git add . -m 'gg'; invoke-build
+#update tag, add commit then build: clears prerelease tag increments to 1.4
+#deleting this tag and build again does nothing
+#delete tag, add commit, and build and prerelease (branchname) is back
+#
+#> git commit -m ':feat:'; invoke-build
+#bumps to 0.2.0
+#
