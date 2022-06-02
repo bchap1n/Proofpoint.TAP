@@ -19,7 +19,7 @@
     $todayAndYesterday = get-tapClickersbyLookbackDays -Credential $Credential -Raw -LookbackDays 1 -URi $URi
     Get permitted clicks for today (utc now) and yesterday
 #>
-{ 0 }
+
 function Get-TapClickersbyLookbackDays {
     [CmdletBinding()]
     param (
@@ -45,6 +45,7 @@ function Get-TapClickersbyLookbackDays {
         Try {
 
             $LookbackDays = if (($LookbackDaysStart + $LookbackDays) -ge 6 ) { 6 }Else { ($LookbackDaysStart + $LookbackDays) } # LookbackDays must be greater than ldStart but less than 6
+            
             foreach ($day in ($LookbackDaysStart..$LookbackDays)) {
                 $startDate = ($now.date).AddDays( - $day) # Today at 00:00:00
             
@@ -86,6 +87,5 @@ function Get-TapClickersbyLookbackDays {
     
     }
     end {}
-
 
 }

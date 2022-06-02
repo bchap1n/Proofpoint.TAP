@@ -41,7 +41,7 @@ Task Press.CopyModuleFiles @{
     Inputs  = {
         Get-ChildItem -File -Recurse $PressSetting.General.SrcRootDir
         $SCRIPT:IncludeFiles = (
-            $null = (Get-ChildItem -File -Recurse "$($PressSetting.General.SrcRootDir)\somesubfolder") | Resolve-Path 
+            $null = (Get-ChildItem -File -Recurse "$($PressSetting.General.SrcRootDir)\somesubfolder") | Resolve-Path # remove null to include a subfolder
         )
         $IncludeFiles
     }
@@ -67,7 +67,7 @@ Task Package Press.Package.Zip
 } #>
 
 # custom
-Task buildnupkg -After Press.Default {
+<# Task buildnupkg -After Press.Default {
     if ( (Test-Path "$($PressSetting.Build.OutDir)\nupkg") -eq $true ) {
         Remove-Item -Path "$($PressSetting.Build.OutDir)\nupkg" -Recurse -Force
     } 
@@ -76,4 +76,4 @@ Task buildnupkg -After Press.Default {
     New-PressNugetPackage -Path "$($presssetting.BuildEnvironment.PSModuleManifest)" -Destination "$($PressSetting.Build.OutDir)\nupkg"
     #$item = Get-ChildItem "$($PressSetting.Build.OutDir)\nupkg" -Filter *.nupkg
     #Rename-Item -Path $item.FullName -NewName "$($item.name).zip" -Force
-}
+} #>
