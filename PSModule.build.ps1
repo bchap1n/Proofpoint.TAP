@@ -67,7 +67,7 @@ Task Package Press.Package.Zip
 } #>
 
 # custom
-<# Task buildnupkg -After Press.Default {
+Task buildnupkg -After Press.Default {
     if ( (Test-Path "$($PressSetting.Build.OutDir)\nupkg") -eq $true ) {
         Remove-Item -Path "$($PressSetting.Build.OutDir)\nupkg" -Recurse -Force
     } 
@@ -76,4 +76,4 @@ Task Package Press.Package.Zip
     New-PressNugetPackage -Path "$($presssetting.BuildEnvironment.PSModuleManifest)" -Destination "$($PressSetting.Build.OutDir)\nupkg"
     #$item = Get-ChildItem "$($PressSetting.Build.OutDir)\nupkg" -Filter *.nupkg
     #Rename-Item -Path $item.FullName -NewName "$($item.name).zip" -Force
-} #>
+}

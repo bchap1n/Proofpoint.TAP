@@ -11,7 +11,7 @@
     RootModule           = 'proofpoint.tap.psm1'
 
     # Version number of this module.
-    ModuleVersion        = '0.0.0.21'
+    ModuleVersion        = '0.0.0.22'
 
     # Supported PSEditions
     CompatiblePSEditions = @('Desktop', 'Core')
@@ -28,13 +28,7 @@
     # Description of the functionality provided by this module
     Description          = 'proofpoint TAP integration tools'
 
-    # Modules that must be imported into the global environment prior to importing this module
-    <#     NestedModules        = @(
-        './SecretManagement.KeePass.Extension/SecretManagement.KeePass.Extension.psd1'
-    ) #>
-    RequiredModules      = @(
-        @{ModuleName = 'PSFramework'; ModuleVersion = '1.6.205' }
-    )
+    RequiredModules      = @()
     PowershellVersion    = '7.2'
     FunctionsToExport    = @('Get-ppTAPclickers1hour', 'Get-TapClickersbyLookbackDays')
     CmdletsToExport      = @()
